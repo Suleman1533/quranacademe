@@ -23,14 +23,14 @@
 
     <style>
         body { font-family: 'Poppins', sans-serif; }
-        .social-icon { height: 48px; width: 48px; transition: transform 0.3s ease; } /* Increased WhatsApp icon size */
+        .social-icon { height: 48px; width: 48px; transition: transform 0.3s ease; }
         .social-icon:hover { transform: scale(1.2); }
         .sticky-cta {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
-            display: none; /* Hidden by default, shown via JS */
+            display: none;
         }
         .nav-menu { transition: all 0.3s ease; }
         .nav-menu-mobile {
@@ -74,17 +74,19 @@
             .contact-form { padding: 1rem; }
             .footer-links { flex-direction: column; gap: 0.5rem; }
             .faq-box { margin-bottom: 1rem; }
+            .whatsapp-widget { right: 20px; } /* Adjust position on mobile */
         }
         @media (min-width: 769px) and (max-width: 1024px) {
             .grid-cols-3 { grid-template-columns: repeat(2, 1fr); }
             .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
             .hero-text { font-size: 3rem; }
+            .whatsapp-widget { right: 90px; } /* Adjusted for tablet */
         }
         /* Floating WhatsApp Widget */
         .whatsapp-widget {
             position: fixed;
             bottom: 20px;
-            right: 125px; /* Adjusted to avoid overlap with sticky CTA */
+            right: 125px;
             z-index: 1000;
             background-color: #25D366;
             border-radius: 50%;
@@ -123,7 +125,7 @@
             },
             "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+92-348-1207467",
+                "telephone": "+92-348-1207469",
                 "contactType": "Customer Service",
                 "email": "quranacademe6@gmail.com"
             }
@@ -496,8 +498,10 @@
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value.trim();
-            const whatsapp = document.getElementById('whatsapp').value.trim();
-            const whatsappRegex = /^\+\d{1,3}\s?\d{9,15}$/;
+            let whatsapp = document.getElementById('whatsapp').value.trim();
+            // Remove all spaces from whatsapp number for validation
+            whatsapp = whatsapp.replace(/\s/g, '');
+            const whatsappRegex = /^\+\d{1,3}\d{9,15}$/; // Updated regex to handle no spaces
             const submitBtn = document.querySelector('#contact-form button[type="submit"]');
 
             if (name && whatsapp && whatsappRegex.test(whatsapp)) {
@@ -514,7 +518,7 @@
                     submitBtn.textContent = 'Submit';
                 }, 1000);
             } else {
-                alert('Please enter a valid name and WhatsApp number (e.g., +44 2079460123).');
+                alert('Please enter a valid name and WhatsApp number (e.g., +442079460123 or +44 2079460123).');
             }
         });
 
@@ -544,7 +548,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 document.querySelector('.sticky-cta').style.display = 'block';
-            }, 2000); // Show after 2 seconds
+            }, 2000);
         });
     </script>
 </body>
