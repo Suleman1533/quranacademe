@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Master the Quran online with Quran Academe. Personalized one-on-one classes, free 3-day trial, and first month free. Flexible timings for kids, adults, and females.">
+    <meta name="description" content="Master the Quran online with Quran Academe. Personalized one-on-one classes, a free 3-day trial, and the first month free. Flexible timings for kids, adults, and females.">
     <meta name="keywords" content="online quran academy, quran classes uk, quran learning, free quran trial, quran for kids, female quran tutors, hifz courses">
     <meta name="author" content="Quran Academe">
     <meta name="robots" content="index, follow">
@@ -13,21 +13,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts (Poppins) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Swiper.js for testimonial slider -->
     <link href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="images/logo.webp">
+    <link rel="icon" type="image/x-icon" href="logo.jpg">
 
     <style>
         body { font-family: 'Poppins', sans-serif; }
-        .social-icon { height: 32px; width: 32px; transition: transform 0.3s ease; }
+        .social-icon { height: 48px; width: 48px; transition: transform 0.3s ease; } /* Increased WhatsApp icon size */
         .social-icon:hover { transform: scale(1.2); }
         .sticky-cta {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
+            display: none; /* Hidden by default, shown via JS */
         }
         .nav-menu { transition: all 0.3s ease; }
         .nav-menu-mobile {
@@ -70,11 +73,35 @@
             .package-card, .service-card { margin: 0.5rem; }
             .contact-form { padding: 1rem; }
             .footer-links { flex-direction: column; gap: 0.5rem; }
+            .faq-box { margin-bottom: 1rem; }
         }
         @media (min-width: 769px) and (max-width: 1024px) {
             .grid-cols-3 { grid-template-columns: repeat(2, 1fr); }
             .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
             .hero-text { font-size: 3rem; }
+        }
+        /* Floating WhatsApp Widget */
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 125px; /* Adjusted to avoid overlap with sticky CTA */
+            z-index: 1000;
+            background-color: #25D366;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-widget:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-widget i {
+            color: white;
+            font-size: 28px;
         }
     </style>
 
@@ -89,7 +116,7 @@
                 "https://www.instagram.com/quran_academe6/",
                 "https://youtube.com/@QuranicQuest66"
             ],
-            "description": "Quran Academe offers personalized online Quran classes with a free 3-day trial and first month free. Ideal for kids, adults, and females with flexible timings.",
+            "description": "Quran Academe offers personalized online Quran classes with a free 3-day trial and the first month free. Ideal for kids, adults, and females with flexible timings.",
             "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "UK"
@@ -106,6 +133,11 @@
 <body class="bg-gradient-to-b from-blue-50 to-white text-gray-800">
     <!-- Sticky CTA Button -->
     <a href="#contact" class="sticky-cta bg-yellow-400 text-blue-900 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 shadow-lg">Book Now</a>
+
+    <!-- Floating WhatsApp Widget -->
+    <a href="https://wa.me/923481207467?text=Hello!%20I%20would%20like%20more%20information%20about%20Quran%20Academe." target="_blank" class="whatsapp-widget">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <!-- Header -->
     <header class="bg-gradient-to-r from-blue-600 to-indigo-500 text-white sticky top-0 z-50 shadow-lg">
@@ -141,8 +173,8 @@
         <div class="absolute inset-0 bg-black opacity-60"></div>
         <div class="container mx-auto px-4 text-center relative z-10">
             <h2 class="text-5xl font-bold mb-4 hero-text">Master the Quran with Quran Academe</h2>
-            <p class="text-xl mb-6">Start with a 3-day free trial and first month free. Flexible classes for all ages!</p>
-            <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20with%20Quran%20Academe" target="_blank" class="bg-yellow-400 text-blue-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-500 transition duration-300">Start Free Trial</a>
+            <p class="text-xl mb-6">Start with a 3-day free trial and your first month free. Enjoy flexible classes for all ages!</p>
+            <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20with%20Quran%20Academe." target="_blank" class="bg-yellow-400 text-blue-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-500 transition duration-300">Start Free Trial</a>
         </div>
     </section>
 
@@ -153,15 +185,15 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-white p-6 rounded-lg shadow-md text-center card-animation">
                     <h3 class="text-2xl font-semibold mb-4 text-blue-600">Who Are We?</h3>
-                    <p class="text-gray-700 leading-relaxed">A global Quran and Islamic Studies Institute offering personalized online classes for kids and adults with expert male and female teachers.</p>
+                    <p class="text-gray-700 leading-relaxed">A globally recognized Quran and Islamic Studies Institute offering personalized online classes for kids and adults, taught by expert male and female teachers.</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md text-center card-animation">
                     <h3 class="text-2xl font-semibold mb-4 text-blue-600">Our Mission</h3>
-                    <p class="text-gray-700 leading-relaxed">Dedicated to nurturing competent huffaz and guardians of the Quran, guiding students in their spiritual journey.</p>
+                    <p class="text-gray-700 leading-relaxed">Dedicated to nurturing competent huffaz and guardians of the Quran, guiding students on their spiritual journey with care and expertise.</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md text-center card-animation">
                     <h3 class="text-2xl font-semibold mb-4 text-blue-600">Our Teachers</h3>
-                    <p class="text-gray-700 leading-relaxed">Highly qualified educators delivering engaging, effective lessons tailored to each student’s needs.</p>
+                    <p class="text-gray-700 leading-relaxed">Highly qualified educators delivering engaging and effective lessons, tailored to meet each student’s unique learning needs.</p>
                 </div>
             </div>
             <div class="mt-12 text-center">
@@ -172,7 +204,7 @@
                     <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Building Strong Moral Character</p>
                     <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Universal Access to Quranic Education</p>
                 </div>
-                <p class="highlight-text text-blue-800 mt-6 font-bold text-lg">Experience our proven teaching method with a free trial and first month free!</p>
+                <p class="highlight-text text-blue-800 mt-6 font-bold text-lg">Experience our proven teaching method with a free trial and your first month free!</p>
             </div>
         </div>
     </section>
@@ -187,11 +219,11 @@
                     <div class="text-gray-700 pl-6 space-y-2">
                         <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> No registration fee</p>
                         <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Free trial session</p>
-                        <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Low monthly fee</p>
+                        <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Competitive monthly fees</p>
                     </div>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md text-center card-animation">
-                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">One-on-One Classes</h3>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-700">One-on-One Classes</h3>
                     <div class="text-gray-700 pl-6 space-y-2">
                         <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Personalized live Quran classes</p>
                         <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Dedicated teacher per student</p>
@@ -199,10 +231,10 @@
                     </div>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md text-center card-animation">
-                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Flexible Timings</h3>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-700">Flexible Timings</h3>
                     <div class="text-gray-700 pl-6 space-y-2">
                         <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> On-demand class scheduling</p>
-                        <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Customizable lesson times</p>
+                        <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Customizable lesson times to suit your schedule</p>
                     </div>
                 </div>
             </div>
@@ -215,34 +247,40 @@
             <h2 class="text-4xl font-bold text-center mb-8 text-blue-700">Our Services</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="service-card bg-gradient-to-br from-blue-100 to-indigo-100 p-6 rounded-lg shadow-md text-center card-animation">
+                    <i class="fas fa-book-open text-blue-700 text-3xl mb-4"></i>
                     <h3 class="text-2xl font-semibold mb-4 text-blue-600">Basic Quran Reading</h3>
-                    <p class="text-gray-700 leading-relaxed">Master the essentials of Quran reading with expert guidance.</p>
-                    <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20Basic%20Quran%20Reading%20with%20Quran%20Academe" target="_blank" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Start Trial!</a>
+                    <p class="text-gray-700 leading-relaxed">Master the essentials of Quran reading with expert guidance from qualified tutors.</p>
+                    <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20Basic%20Quran%20Reading%20with%20Quran%20Academe." target="_blank" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Start Trial!</a>
                 </div>
                 <div class="service-card bg-gradient-to-br from-blue-100 to-indigo-100 p-6 rounded-lg shadow-md text-center card-animation">
+                    <i class="fas fa-child text-blue-700 text-3xl mb-4"></i>
                     <h3 class="text-2xl font-semibold mb-4 text-blue-600">Quran for Kids</h3>
-                    <p class="text-gray-700 leading-relaxed">Fun, engaging lessons for children to learn the Quran.</p>
-                    <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20Quran%20for%20Kids%20with%20Quran%20Academe" target="_blank" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Start Trial!</a>
+                    <p class="text-gray-700 leading-relaxed">Fun and engaging lessons designed for children to learn the Quran effectively.</p>
+                    <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20Quran%20for%20Kids%20with%20Quran%20Academe." target="_blank" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Start Trial!</a>
                 </div>
                 <div class="service-card bg-gradient-to-br from-blue-100 to-indigo-100 p-6 rounded-lg shadow-md text-center card-animation">
+                    <i class="fas fa-memory text-blue-700 text-3xl mb-4"></i>
                     <h3 class="text-2xl font-semibold mb-4 text-blue-600">Quran Memorization</h3>
-                    <p class="text-gray-700 leading-relaxed">Structured Hifz program with daily revision support.</p>
-                    <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20Quran%20Memorization%20with%20Quran%20Academe" target="_blank" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Start Trial!</a>
+                    <p class="text-gray-700 leading-relaxed">Structured Hifz program with daily revision support to ensure memorization success.</p>
+                    <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20Quran%20Memorization%20with%20Quran%20Academe." target="_blank" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Start Trial!</a>
                 </div>
                 <div class="service-card bg-gradient-to-br from-blue-100 to-indigo-100 p-6 rounded-lg shadow-md text-center card-animation">
+                    <i class="fas fa-mosque text-blue-700 text-3xl mb-4"></i>
                     <h3 class="text-2xl font-semibold mb-4 text-blue-600">Islamic Concepts</h3>
-                    <p class="text-gray-700 leading-relaxed">Learn the fundamentals of Islam from home.</p>
-                    <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20Islamic%20Concepts%20with%20Quran%20Academe" target="_blank" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Start Trial!</a>
+                    <p class="text-gray-700 leading-relaxed">Learn the fundamentals of Islam from the comfort of your home with expert instruction.</p>
+                    <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20Islamic%20Concepts%20with%20Quran%20Academe." target="_blank" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Start Trial!</a>
                 </div>
                 <div class="service-card bg-gradient-to-br from-blue-100 to-indigo-100 p-6 rounded-lg shadow-md text-center card-animation">
+                    <i class="fas fa-language text-blue-700 text-3xl mb-4"></i>
                     <h3 class="text-2xl font-semibold mb-4 text-blue-600">Learn Urdu</h3>
-                    <p class="text-gray-700 leading-relaxed">Interactive Urdu lessons for all ages, online.</p>
-                    <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20Learn%20Urdu%20with%20Quran%20Academe" target="_blank" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Start Trial!</a>
+                    <p class="text-gray-700 leading-relaxed">Interactive Urdu lessons for all ages, delivered online by experienced tutors.</p>
+                    <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20Learn%20Urdu%20with%20Quran%20Academe." target="_blank" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Start Trial!</a>
                 </div>
                 <div class="service-card bg-gradient-to-br from-blue-100 to-indigo-100 p-6 rounded-lg shadow-md text-center card-animation">
+                    <i class="fas fa-calculator text-blue-700 text-3xl mb-4"></i>
                     <h3 class="text-2xl font-semibold mb-4 text-blue-600">Mathematics for Kids</h3>
-                    <p class="text-gray-700 leading-relaxed">Engaging and interactive math lessons for children.</p>
-                    <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20Mathematics%20for%20Kids%20with%20Quran%20Academe" target="_blank" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Start Trial!</a>
+                    <p class="text-gray-700 leading-relaxed">Engaging and interactive math lessons designed to build confidence in children.</p>
+                    <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20Mathematics%20for%20Kids%20with%20Quran%20Academe." target="_blank" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Start Trial!</a>
                 </div>
             </div>
             <div class="mt-12 text-center">
@@ -250,9 +288,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
                     <div class="bg-blue-700 text-white p-6 rounded-lg card-animation">
                         <p class="text-xl font-bold">50 GBP / 65 USD / 85 CAD</p>
-                        <p class="text-sm">Monthly.</p>
-                        <p>20 Classes in a Month.</p>
-                        <p>5 Days in a Week.</p>
+                        <p class="text-sm">Monthly</p>
+                        <p>20 Classes per Month</p>
+                        <p>5 Days per Week</p>
                         <div class="text-left mt-2 space-y-1">
                             <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Quran Reading</p>
                             <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Namaz / Salah</p>
@@ -261,13 +299,13 @@
                             <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> One-to-One Online Classes</p>
                         </div>
                         <p class="text-sm text-yellow-300 mt-2">First Month Free</p>
-                        <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20the%2050%20GBP%20package%20with%20Quran%20Academe" target="_blank" class="mt-4 inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500 transition duration-300">Start Trial!</a>
+                        <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20the%2050%20GBP%20package%20with%20Quran%20Academe." target="_blank" class="mt-4 inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500 transition duration-300">Start Trial!</a>
                     </div>
                     <div class="bg-blue-700 text-white p-6 rounded-lg card-animation">
                         <p class="text-xl font-bold">40 GBP / 50 USD / 65 CAD</p>
-                        <p class="text-sm">Monthly.</p>
-                        <p>12 Classes in a Month.</p>
-                        <p>3 Days in a Week.</p>
+                        <p class="text-sm">Monthly</p>
+                        <p>12 Classes per Month</p>
+                        <p>3 Days per Week</p>
                         <div class="text-left mt-2 space-y-1">
                             <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Quran Reading</p>
                             <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Namaz / Salah</p>
@@ -276,13 +314,13 @@
                             <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> One-to-One Online Classes</p>
                         </div>
                         <p class="text-sm text-yellow-300 mt-2">First Month Free</p>
-                        <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20the%2040%20GBP%20package%20with%20Quran%20Academe" target="_blank" class="mt-4 inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500 transition duration-300">Start Trial!</a>
+                        <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20the%2040%20GBP%20package%20with%20Quran%20Academe." target="_blank" class="mt-4 inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500 transition duration-300">Start Trial!</a>
                     </div>
                     <div class="bg-blue-700 text-white p-6 rounded-lg card-animation">
                         <p class="text-xl font-bold">30 GBP / 40 USD / 55 CAD</p>
-                        <p class="text-sm">Monthly.</p>
-                        <p>8 Classes in a Month.</p>
-                        <p>2 Days in a Week.</p>
+                        <p class="text-sm">Monthly</p>
+                        <p>8 Classes per Month</p>
+                        <p>2 Days per Week</p>
                         <div class="text-left mt-2 space-y-1">
                             <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Quran Reading</p>
                             <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Namaz / Salah</p>
@@ -291,13 +329,13 @@
                             <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> One-to-One Online Classes</p>
                         </div>
                         <p class="text-sm text-yellow-300 mt-2">First Month Free</p>
-                        <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20the%2030%20GBP%20package%20with%20Quran%20Academe" target="_blank" class="mt-4 inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500 transition duration-300">Start Trial!</a>
+                        <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20the%2030%20GBP%20package%20with%20Quran%20Academe." target="_blank" class="mt-4 inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500 transition duration-300">Start Trial!</a>
                     </div>
                     <div class="bg-blue-700 text-white p-6 rounded-lg card-animation">
                         <p class="text-xl font-bold">45 GBP / 60 USD / 80 CAD</p>
-                        <p class="text-sm">Monthly.</p>
-                        <p>8 Classes in a Month.</p>
-                        <p>Weekend Classes.</p>
+                        <p class="text-sm">Monthly</p>
+                        <p>8 Classes per Month</p>
+                        <p>Weekend Classes</p>
                         <div class="text-left mt-2 space-y-1">
                             <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Quran Reading</p>
                             <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Namaz / Salah</p>
@@ -306,7 +344,7 @@
                             <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> One-to-One Online Classes</p>
                         </div>
                         <p class="text-sm text-yellow-300 mt-2">First Month Free</p>
-                        <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20the%2045%20GBP%20weekend%20package%20with%20Quran%20Academe" target="_blank" class="mt-4 inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500 transition duration-300">Start Trial!</a>
+                        <a href="https://wa.me/923481207467?text=I'm%20interested%20in%20starting%20a%20free%20trial%20for%20the%2045%20GBP%20weekend%20package%20with%20Quran%20Academe." target="_blank" class="mt-4 inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500 transition duration-300">Start Trial!</a>
                     </div>
                 </div>
                 <p class="highlight-text text-blue-800 mt-6 font-bold text-lg">Try our 3-day free trial with no obligation!</p>
@@ -317,20 +355,20 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-8 text-blue-700">What Our Students Say</h2>
+            <h2 class="text-4xl font-bold text-center mb-8 text-blue-700">What Our Students Say <i class="fas fa-quote-left text-blue-700 ml-2"></i></h2>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide bg-white p-6 rounded-lg shadow-md text-center card-animation">
                         <p class="text-gray-700 italic">"The teachers are so patient and supportive. My kids love their Quran classes!"</p>
-                        <p class="mt-4 font-semibold text-blue-600">Sarah M., Parent</p>
+                        <p class="mt-4 font-semibold text-blue-600">Sarah M., Parent <i class="fas fa-user text-blue-700 ml-2"></i></p>
                     </div>
                     <div class="swiper-slide bg-white p-6 rounded-lg shadow-md text-center card-animation">
                         <p class="text-gray-700 italic">"The flexible timings made it easy to fit lessons into my busy schedule."</p>
-                        <p class="mt-4 font-semibold text-blue-600">Ahmed R., Student</p>
+                        <p class="mt-4 font-semibold text-blue-600">Ahmed R., Student <i class="fas fa-user text-blue-700 ml-2"></i></p>
                     </div>
                     <div class="swiper-slide bg-white p-6 rounded-lg shadow-md text-center card-animation">
                         <p class="text-gray-700 italic">"The free trial helped me see the quality of teaching before committing."</p>
-                        <p class="mt-4 font-semibold text-blue-600">Fatima K., Student</p>
+                        <p class="mt-4 font-semibold text-blue-700">Fatima K., Student <i class="fas fa-user text-blue-700 ml-2"></i></p>
                     </div>
                 </div>
                 <div class="swiper-button-prev"></div>
@@ -343,23 +381,23 @@
     <section id="how-we-teach" class="py-20 bg-gradient-to-r from-blue-50 to-indigo-100">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-extrabold text-center mb-4 text-blue-800 animate__animated animate__fadeInDown">How We Teach</h2>
-            <p class="text-center text-gray-600 mb-2 text-lg">Embark on a transformative journey with the Quran. InshaAllah.</p>
-            <p class="text-center text-gray-600 mb-10 text-lg">Interactive, comprehensive courses for all ages — from beginners to Hifz.</p>
+            <p class="text-center text-gray-600 mb-2 text-lg">Embark on a transformative journey with the Quran, InshaAllah.</p>
+            <p class="text-center text-gray-600 mb-10 text-lg">Interactive, comprehensive courses for all ages—from beginners to Hifz.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
                     <div class="flex items-center mb-4">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Evaluation Icon" class="w-10 h-10 mr-4">
+                        <i class="fas fa-check-circle text-blue-700 text-2xl mr-4"></i>
                         <h3 class="text-2xl font-semibold text-blue-700">Evaluation Procedure</h3>
                     </div>
                     <div class="text-gray-700 leading-relaxed pl-5 space-y-2">
-                        <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Tutors undergo regular training and assessments to maintain teaching quality.</p>
+                        <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Tutors undergo regular training and assessments to maintain high teaching quality.</p>
                         <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Weekly and monthly student evaluations ensure consistent progress.</p>
-                        <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Feedback shared with parents or guardians regularly.</p>
+                        <p class="flex items-center"><span class="text-yellow-300 mr-2">✓</span> Feedback is shared with parents or guardians regularly.</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
                     <div class="flex items-center mb-4">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3303/3303891.png" alt="Teaching Icon" class="w-10 h-10 mr-4">
+                        <i class="fas fa-chalkboard-teacher text-indigo-700 text-2xl mr-4"></i>
                         <h3 class="text-2xl font-semibold text-indigo-700">Our Teaching Techniques</h3>
                     </div>
                     <div class="text-gray-700 leading-relaxed pl-5 space-y-2">
@@ -372,13 +410,36 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-gray-200">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-blue-700 text-center mb-8">Got Questions? We've Got Answers! <i class="fas fa-question-circle text-blue-700 ml-2"></i></h2>
+            <p class="text-gray-600 text-center mb-6">Have doubts? Find answers about our Quran classes, schedules, teaching methods, and more below!</p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/3 faq-box">
+                    <h3 class="text-xl font-semibold text-blue-700 mb-4"><i class="fas fa-video text-blue-700 mr-2"></i>How Do Online Quran Classes Work?</h3>
+                    <p class="text-gray-700">Our online Quran classes are conducted via Zoom or Skype, where students connect with a qualified tutor in live, interactive sessions. You can choose between one-on-one or group classes based on your preference.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/3 faq-box">
+                    <h3 class="text-xl font-semibold text-blue-700 mb-4"><i class="fas fa-money-bill-wave text-blue-700 mr-2"></i>What Are the Fees for Quran Classes?</h3>
+                    <p class="text-gray-700">Our pricing depends on the course, class frequency, and duration. Contact us for detailed pricing plans, including discounts for siblings or group enrollments.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md w-full md:w-1/3 faq-box">
+                    <h3 class="text-xl font-semibold text-blue-700 mb-4"><i class="fas fa-gift text-blue-700 mr-2"></i>Is There a Free Trial Class Available?</h3>
+                    <p class="text-gray-700">Yes! We offer a free 3-day trial class to experience our teaching quality. Contact us today to schedule your trial session.</p>
+                    <a href="#contact" class="mt-4 inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500 transition duration-300">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-16 bg-gradient-to-r from-blue-100 to-indigo-100">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-8 text-blue-700">Contact Us</h2>
+            <h2 class="text-4xl font-bold text-center mb-8 text-blue-700">Contact Us <i class="fas fa-envelope-open-text text-blue-700 ml-2"></i></h2>
             <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg contact-form">
                 <h3 class="text-2xl font-semibold text-center mb-4 text-blue-600">Get in Touch</h3>
-                <p class="text-center text-gray-600 mb-4 leading-relaxed">Your information is secure with us.</p>
+                <p class="text-center text-gray-600 mb-4 leading-relaxed">Your information is secure with us and will be handled with confidentiality.</p>
                 <form id="contact-form" class="space-y-4">
                     <div>
                         <label for="name" class="block text-gray-700 font-medium">Name*</label>
@@ -386,12 +447,11 @@
                     </div>
                     <div>
                         <label for="whatsapp" class="block text-gray-700 font-medium">WhatsApp Number (with Country Code)*</label>
-                        <input type="text" id="whatsapp" class="w-full p-3 border rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-200" placeholder="e.g., +442079460123
-" required aria-required="true">
+                        <input type="text" id="whatsapp" class="w-full p-3 border rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-200" placeholder="e.g., +44 2079460123" required aria-required="true">
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300">Submit</button>
-                        <button type="button" id="clear-btn" class="ml-4 text-gray-500 hover:text-gray-700 transition duration-300">Clear</button>
+                        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300"><i class="fas fa-paper-plane mr-2"></i>Submit</button>
+                        <button type="button" id="clear-btn" class="ml-4 text-gray-500 hover:text-gray-700 transition duration-300"><i class="fas fa-trash mr-2"></i>Clear</button>
                     </div>
                 </form>
                 <p class="text-center text-gray-600 mt-4 text-sm">* Required</p>
@@ -401,9 +461,9 @@
                     <a href="https://www.instagram.com/quran_academe6/" target="_blank" aria-label="Instagram"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="social-icon"></a>
                     <a href="mailto:quranacademe6@gmail.com" aria-label="Email"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" class="social-icon"></a>
                 </div>
-                <p class="text-center text-blue-600 mt-4 leading-relaxed">Need help? Reach us on WhatsApp!</p>
+                <p class="text-center text-blue-600 mt-4 leading-relaxed">Need help? Reach us on WhatsApp for immediate assistance!</p>
                 <p class="text-center">
-                    <a href="https://wa.me/923481207467" class="bg-blue-600 text-white px-6 py-3 rounded-full inline-block hover:bg-blue-700 transition duration-300" aria-label="Message on WhatsApp">Message Us</a>
+                    <a href="https://wa.me/923481207467" class="bg-blue-600 text-white px-6 py-3 rounded-full inline-block hover:bg-blue-700 transition duration-300" aria-label="Message on WhatsApp"><i class="fab fa-whatsapp mr-2"></i>Message Us</a>
                 </p>
             </div>
         </div>
@@ -454,7 +514,7 @@
                     submitBtn.textContent = 'Submit';
                 }, 1000);
             } else {
-                alert('Please enter a valid name and WhatsApp number (e.g., +92 123 4567890).');
+                alert('Please enter a valid name and WhatsApp number (e.g., +44 2079460123).');
             }
         });
 
@@ -478,6 +538,13 @@
                 768: { slidesPerView: 2 },
                 1024: { slidesPerView: 3 }
             }
+        });
+
+        // Sticky CTA button delay for mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelector('.sticky-cta').style.display = 'block';
+            }, 2000); // Show after 2 seconds
         });
     </script>
 </body>
