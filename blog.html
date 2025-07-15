@@ -1,0 +1,248 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Quran Academe's blog for insights on Quran teaching, children's ikhlaq, and online Quran classes for UK families. Start your 5-day free trial today!">
+    <meta name="keywords" content="Quran classes UK, online Quran learning, Quran for kids, Islamic education, children's ikhlaq, Quran teaching benefits">
+    <meta name="author" content="Quran Academe">
+    <meta name="robots" content="index, follow">
+    <title>Quran Academe Blog - Learn Quran Online</title>
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="logo.jpg">
+
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .social-icon { height: 48px; width: 48px; transition: transform 0.3s ease; }
+        .social-icon:hover { transform: scale(1.2); }
+        .sticky-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;
+        }
+        .nav-menu { transition: all 0.3s ease; }
+        .nav-menu-mobile {
+            transform: translateY(-100%);
+            opacity: 0;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(37, 99, 235, 0.95);
+            padding: 1rem;
+        }
+        .nav-menu-mobile.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .highlight-text {
+            background: linear-gradient(45deg, #fefcbf, #f59e0b);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+        }
+        .card-animation {
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            .nav-menu { flex-direction: column; gap: 1rem; }
+            .grid-cols-3 { grid-template-columns: 1fr; }
+            .blog-post { margin: 0.5rem; }
+            .footer-links { flex-direction: column; gap: 0.5rem; }
+            .whatsapp-widget { right: 20px; }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .grid-cols-3 { grid-template-columns: repeat(2, 1fr); }
+            .whatsapp-widget { right: 90px; }
+        }
+        .whatsapp-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 125px;
+            z-index: 1000;
+            background-color: #25D366;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-widget:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-widget i {
+            color: white;
+            font-size: 28px;
+        }
+    </style>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "name": "Quran Academe Blog",
+            "url": "https://www.quranacademe.uk/blog.html",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Quran Academe",
+                "url": "https://www.quranacademe.uk"
+            },
+            "description": "Explore Quran Academe's blog for insights on Quran teaching, children's ikhlaq, and online Quran classes for UK families."
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-white text-gray-800">
+    <!-- Sticky CTA Button -->
+    <a href="index.html#contact" class="sticky-cta bg-yellow-400 text-blue-900 px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 shadow-lg">Book Now</a>
+
+    <!-- Floating WhatsApp Widget -->
+    <a href="https://wa.me/923481207467?text=Hello!%20I%20would%20like%20more%20information%20about%20Quran%20Academe." target="_blank" class="whatsapp-widget">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-500 text-white sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <img src="logo.jpg" alt="Quran Academe Logo" class="h-12" loading="lazy">
+                <span class="ml-2 text-xl font-bold">Quran Academe</span>
+            </a>
+            <button id="menu-toggle" class="md:hidden focus:outline-none" aria-label="Toggle mobile menu">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <ul id="nav-menu" class="nav-menu hidden md:flex space-x-6">
+                <li><a href="index.html#home" class="hover:text-yellow-300 transition duration-300">Home</a></li>
+                <li><a href="index.html#about" class="hover:text-yellow-300 transition duration-300">About</a></li>
+                <li><a href="index.html#services" class="hover:text-yellow-300 transition duration-300">Services</a></li>
+                <li><a href="index.html#testimonials" class="hover:text-yellow-300 transition duration-300">Testimonials</a></li>
+                <li><a href="index.html#contact" class="hover:text-yellow-300 transition duration-300">Contact</a></li>
+                <li><a href="blog.html" class="hover:text-yellow-300 transition duration-300">Blog</a></li>
+            </ul>
+        </nav>
+        <ul id="mobile-menu" class="nav-menu-mobile hidden md:hidden flex-col px-4 py-2 space-y-2 bg-blue-600 text-white">
+            <li><a href="index.html#home" class="hover:text-yellow-300">Home</a></li>
+            <li><a href="index.html#about" class="hover:text-yellow-300">About</a></li>
+            <li><a href="index.html#services" class="hover:text-yellow-300">Services</a></li>
+            <li><a href="index.html#testimonials" class="hover:text-yellow-300">Testimonials</a></li>
+            <li><a href="index.html#contact" class="hover:text-yellow-300">Contact</a></li>
+            <li><a href="blog.html" class="hover:text-yellow-300">Blog</a></li>
+        </ul>
+    </header>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-8 text-blue-700">Quran Academe Blog</h2>
+            <p class="text-center text-gray-600 mb-10 text-lg">Discover tips, insights, and benefits of Quran learning for you and your family.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="blog-post bg-white p-6 rounded-lg shadow-md card-animation">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Why Teaching the Quran to Your Kids is Essential in the UK</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">In today’s fast-paced world, raising children with strong moral values is more important than ever. Teaching the Quran to your kids in the UK not only connects them to their faith but also instils discipline, empathy, and respect. At <a href="index.html" class="text-blue-600 hover:underline">Quran Academe</a>, our online Quran classes help children learn to read and understand the Quran, fostering a deep spiritual connection. Our <a href="index.html#services" class="text-blue-600 hover:underline">personalised lessons</a> are tailored to young learners, ensuring they grow into confident individuals with a strong sense of ikhlaq (character).</p>
+                    <p class="text-gray-600 text-sm mb-4">Posted on July 15, 2025</p>
+                    <a href="index.html#contact" class="inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500 transition duration-300">Start Your 5-Day Free Trial</a>
+                </div>
+                <div class="blog-post bg-white p-6 rounded-lg shadow-md card-animation">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">Building Strong Ikhlaq: How Quran Learning Shapes Children’s Character</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">Ikhlaq, or good character, is a cornerstone of Islamic teachings. By enrolling your child in our <a href="index.html#services" class="text-blue-600 hover:underline">Quran for Kids</a> programme, you help them develop honesty, kindness, and patience through Quranic teachings. Our expert tutors use interactive methods to make learning engaging, ensuring children in the UK grow up with values that guide them through life. Discover how our <a href="index.html#contact" class="text-blue-600 hover:underline">online classes</a> can shape your child’s moral foundation.</p>
+                    <p class="text-gray-600 text-sm mb-4">Posted on July 15, 2025</p>
+                    <a href="index.html#contact" class="inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500 transition duration-300">Start Your 5-Day Free Trial</a>
+                </div>
+                <div class="blog-post bg-white p-6 rounded-lg shadow-md card-animation">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-600">The Benefits of Online Quran Classes for Busy UK Families</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">Balancing work, school, and family life in the UK can be challenging. Our <a href="index.html#services" class="text-blue-600 hover:underline">online Quran classes</a> offer flexible timings to fit your schedule, making Islamic education accessible for kids and adults. With a 5-day free trial, you can experience our one-on-one teaching approach, designed to deliver quality learning from the comfort of your home. Join <a href="index.html" class="text-blue-600 hover:underline">Quran Academe</a> to nurture your family’s spiritual growth without the hassle.</p>
+                    <p class="text-gray-600 text-sm mb-4">Posted on July 15, 2025</p>
+                    <a href="index.html#contact" class="inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded hover:bg-yellow-500 transition duration-300">Start Your 5-Day Free Trial</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-blue-600 to-indigo-500 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg">© 2025 Quran Academe. All rights reserved.</p>
+            <p class="mt-2">Contact: <a href="mailto:quranacademe6@gmail.com" class="underline hover:text-yellow-300">quranacademe6@gmail.com</a> | Phone: <a href="tel:+923481207467" class="underline hover:text-yellow-300">+92 348 1207467</a></p>
+            <div class="mt-4 footer-links flex justify-center space-x-4">
+                <a href="https://www.facebook.com/profile.php?id=61574209492974" class="underline hover:text-yellow-300" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/quran_academe6/" class="underline hover:text-yellow-300" target="_blank">Instagram</a>
+                <a href="https://youtube.com/@QuranicQuest66" class="underline hover:text-yellow-300" target="_blank">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Sticky CTA button delay for mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelector('.sticky-cta').style.display = 'block';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
